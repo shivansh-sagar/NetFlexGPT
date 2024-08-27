@@ -1,5 +1,8 @@
 # Netflex GPT
-- Create 
+- Create viteApp
+- Configured TailwindCSS
+- Header
+- Login Form
 
 # Features
 - Login/Sign Up

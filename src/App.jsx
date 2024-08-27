@@ -1,11 +1,9 @@
-import './App.css'
+import Body from './components/Body'
 
 function App() {
   return (
     <>
-      <div className=' text-red-50'>
-        Hello
-      </div>
+      <Body/>
     </>
   )
 }
