@@ -2,16 +2,16 @@
 - Create 
 
 # Features
--Login/Sign Up
+- Login/Sign Up
     - SignIn / SignUp form
-    -redirect to Browse Page 
--Browse (after authentication)
-    -Header
-    -Main Movie
-        -Tailer in BG
-        -Title & Description
+    - redirect to Browse Page 
+- Browse (after authentication)
+    - Header
+    - Main Movie
+        - Tailer in BG
+        - Title & Description
         - Movie Suggestion
-            -MoviesList + N
+            - MoviesList + N
 - NetflexGPT
     - Search Bar
-    -Movie Suggestions
+    - Movie Suggestions
