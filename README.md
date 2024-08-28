@@ -4,6 +4,9 @@
 - Header
 - Routing of App
 - Login Form / SignUp Form
+- form validation
+- Firebase Setup
+- Create SignUp User Account
 
 # Features
 - Login/Sign Up

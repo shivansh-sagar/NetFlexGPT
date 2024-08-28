@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import Header from "./Header";
 import BgImg from "../assets/MainBgImg.jpg";
 import { checkValidData } from "../utils/validation";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebase";
 const Login = () => {
   const [SignInForm, SetSignInForm] = useState(true);
   const [ErrMessage, SetErrMessage] = useState(null);
@@ -15,11 +17,51 @@ const Login = () => {
   const handleButtonClick = () => {
     const EMessage = checkValidData(
       email.current.value,
-      password.current.value,
-      
+      password.current.value
     );
     SetErrMessage(EMessage);
-    
+
+    if (EMessage) return;
+    // Sign Up logic
+    if (!SignInForm) {
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          SetErrMessage(errorCode + "-" + errorMessage);
+          // ..
+        });
+    }
+    // Sign In Logic
+     else {
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode +":"+errorMessage)
+          
+        });
+    }
     
   };
   return (
@@ -38,14 +80,12 @@ const Login = () => {
         </h1>
         <div className="flex flex-col items-center">
           {!SignInForm && (
-            
-              <input
+            <input
               ref={name}
               type="text"
               placeholder="Full Name"
               className=" w-9/12 p-2 m-2 bg-zinc-700 rounded-sm"
             />
-            
           )}
           <input
             ref={email}
@@ -54,7 +94,7 @@ const Login = () => {
             className=" w-9/12 p-2 m-2 bg-zinc-700 rounded-sm"
           />
           <p className="  items-start text-[10px] text-red-500  ">
-            {!ErrMessage? null : ErrMessage.email}
+            {!ErrMessage ? null : ErrMessage.email}
           </p>
           <input
             ref={password}
@@ -63,7 +103,7 @@ const Login = () => {
             className="w-9/12 p-2 m-2 bg-zinc-700 rounded-sm"
           />
           <p className="  items-start text-[10px] text-red-500   ">
-            {!ErrMessage? null: ErrMessage.password}
+            {!ErrMessage ? null : ErrMessage.password}
           </p>
           <button
             className="w-9/12 p-2 mt-7 mx-2 bg-red-700 rounded-sm"
@@ -71,6 +111,7 @@ const Login = () => {
           >
             {SignInForm ? "Sign In" : "Sign Up"}
           </button>
+          {/* // An error message if not register */}
         </div>
 
         <p
