@@ -31,7 +31,6 @@ const Login = () => {
       email.current.value,
       password.current.value
     );
-    console.log(EMessage);
     SetErrMessage(EMessage);
 
     if (EMessage) return;
@@ -57,21 +56,17 @@ const Login = () => {
                 addUser({uid: uid, email: email, displayName: displayName})
               )
               navigate("/browse");
-              // ...
             })
             .catch((error) => {
               // An error occurred
               SetErrMessage(error.message);
               // ...
             });
-          console.log(user);
-          // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           SetErrMessage(errorCode + "-" + errorMessage);
-          // ..
         });
     }
     // SIGN IN LOGIC
@@ -84,7 +79,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
           navigate("/browse");
           // ...
         })
@@ -92,7 +86,6 @@ const Login = () => {
           const errorCode = error.code;
           const errorMessage = error.message;
           SetErrMessage(errorCode + "-" + errorMessage);
-          console.log(ErrMessage);
         });
     }
   };
