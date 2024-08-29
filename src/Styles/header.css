@@ -1,0 +1,10 @@
+/* Custom styles for the dropdown */
+.dark-dropdown .ant-dropdown-menu {
+    
+    background-color: #3b3a3a;
+    /* Dark background color */
+    color: white;
+    /* White text color */
+}
+
+

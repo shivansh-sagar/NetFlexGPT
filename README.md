@@ -7,6 +7,9 @@
 - form validation
 - Firebase Setup
 - Create SignUp User Account
+- Implemented Sign In user Api
+- Redux ToolKit SetUp
+- Created Redux Store with userSlice
 
 # Features
 - Login/Sign Up
